@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for tag in {16.04,latest}; do
+    docker build . --build-arg ubuntu_tag=${tag} -t "$IMAGE_NAME-$tag"
+done
