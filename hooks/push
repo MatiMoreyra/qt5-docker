@@ -1,5 +1,5 @@
 #!/bin/bash
 
 for tag in {16.04,latest}; do
-    docker push ${IMAGE_NAME}:${tag}
+    docker push matimoreyra/qt5:${tag}
 done
