@@ -1,5 +1,5 @@
 #!/bin/bash
 
-for tag in {16.04,latest}; do
+for tag in {bionic, xenial}; do
     docker build . --build-arg ubuntu_tag=${tag} -t matimoreyra/qt5:${tag}
 done
