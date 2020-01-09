@@ -1,4 +1,6 @@
-FROM ubuntu:16.04
+ARG ubuntu_tag=latest
+
+FROM ubuntu:${ubuntu_tag}
 
 # Update package list
 RUN apt-get update
@@ -19,7 +21,7 @@ RUN apt-get install -y qt5-default libfontconfig1
 RUN apt-get install -y mesa-common-dev libglu1-mesa-dev -y
 
 # Install GTest
-RUN apt-get install libgtest-dev && \
+RUN apt-get install -y libgtest-dev && \
     cd /usr/src/gtest/ && \
     cmake -DBUILD_SHARED_LIBS=ON && \
     make && \
