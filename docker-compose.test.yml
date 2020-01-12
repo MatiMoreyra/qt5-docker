@@ -1,0 +1,6 @@
+sut:
+    image: docker:latest
+    volumes:
+        - .:/workspace
+    working_dir: /workspace
+    command: [hooks/build, hooks/test]
