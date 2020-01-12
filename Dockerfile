@@ -1,4 +1,4 @@
-ARG ubuntu_tag=bionic
+ARG ubuntu_tag=latest
 
 FROM ubuntu:${ubuntu_tag}
 
