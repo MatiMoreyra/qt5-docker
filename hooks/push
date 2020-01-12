@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source hooks/tags
+
+for tag in "${TAGS[@]}"; do
+    docker push ${DOCKER_REPO}:${tag}
+done
