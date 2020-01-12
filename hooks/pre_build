@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# exit when any command fails
+set -e
+trap "exit \$?" INT TERM EXIT
+
+source hooks/tags
+
+for tag in "${TAGS[@]}"; do
+    docker pull ${DOCKER_REPO}:${tag}
+done
