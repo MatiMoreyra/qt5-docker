@@ -1,5 +1,5 @@
 #!/bin/bash
 
-for tag in {bionic,xenial}; do
+for tag in {bionic,xenial,latest}; do
     docker push ${DOCKER_REPO}:${tag}
 done
