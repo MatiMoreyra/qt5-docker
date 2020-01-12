@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# exit when any command fails
+set -e
+trap "exit \$?" INT TERM EXIT
+
+source hooks/tags
+
+for tag in "${TAGS[@]}"; do
+    # Start a container
+    docker run\
+        -dit\
+        -v $(pwd):/workspace \
+        --workdir "/workspace/test/executable"\
+        --name ${tag}\
+        ${DOCKER_REPO}:${tag}
+    # Build the test project
+    docker exec -i\
+        ${tag}\
+        bash "./build.sh"
+    # Clean
+    docker exec -i\
+        ${tag}\
+        bash "./build.sh"
+    docker container stop ${tag}
+    docker container rm ${tag}
+done
