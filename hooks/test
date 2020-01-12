@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# exit when any command fails
+set -e
+trap "exit \$?" INT TERM EXIT
+
 source hooks/tags
 
 for tag in "${TAGS[@]}"; do
@@ -7,16 +11,15 @@ for tag in "${TAGS[@]}"; do
     docker run\
         -dit\
         -v $(pwd):/workspace \
+        --workdir "/workspace/test/executable"\
         --name ${tag}\
         ${DOCKER_REPO}:${tag}
     # Build the test project
     docker exec -i\
-        --workdir "/workspace/test/executable"\
         ${tag}\
         bash "./build.sh"
     # Clean
     docker exec -i\
-        --workdir "/workspace/test/executable"\
         ${tag}\
         bash "./build.sh"
     docker container stop ${tag}
