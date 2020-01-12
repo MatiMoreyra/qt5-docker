@@ -5,5 +5,5 @@ for tag in {bionic,xenial,latest}; do
     docker build .\
         --build-arg ubuntu_tag=${tag}\
         --cache-from ${DOCKER_REPO}:${tag}\
-        -t ${DOCKER_REPO}:${tag}\
+        -t ${DOCKER_REPO}:${tag}
 done
