@@ -1,5 +1,9 @@
 #!/bin/bash
 
-for tag in {bionic,xenial}; do
-    docker build . --build-arg ubuntu_tag=${tag} -t matimoreyra/qt5:${tag}
+for tag in {bionic,xenial,latest}; do
+    docker pull ${DOCKER_REPO}:${tag}
+    docker build .\
+        --build-arg ubuntu_tag=${tag}\
+        --cache-from ${DOCKER_REPO}:${tag}\
+        -t ${DOCKER_REPO}:${tag}\
 done
