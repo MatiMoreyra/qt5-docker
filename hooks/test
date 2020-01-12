@@ -10,13 +10,13 @@ for tag in "${TAGS[@]}"; do
         --name ${tag}\
         ${DOCKER_REPO}:${tag}
     # Build the test project
-    docker exec\
-        -w "/workspace/test/executable"\
+    docker exec -i\
+        --workdir "/workspace/test/executable"\
         ${tag}\
         bash "./build.sh"
     # Clean
-    docker exec\
-        -w "/workspace/test/executable"\
+    docker exec -i\
+        --workdir "/workspace/test/executable"\
         ${tag}\
         bash "./build.sh"
     docker container stop ${tag}
