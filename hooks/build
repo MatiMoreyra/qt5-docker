@@ -1,6 +1,8 @@
 #!/bin/bash
 
-for tag in {bionic,xenial,latest}; do
+source hooks/tags
+
+for tag in "${TAGS[@]}"; do
     docker pull ${DOCKER_REPO}:${tag}
     docker build .\
         --build-arg ubuntu_tag=${tag}\
