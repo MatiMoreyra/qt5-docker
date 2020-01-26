@@ -46,7 +46,7 @@ docker run -dit [--name <container_name>] matimoreyra/qt5[:tag]
 
 ## CI/CD
 ### Continuous integration
-Every pull request is automatically build and tested on Docker Hub (see [docker-compose.test.yml](https://github.com/MatiMoreyra/qt5-docker/blob/master/hooks/pre_build)).
+Every pull request is automatically built and tested on Docker Hub (see [docker-compose.test.yml](https://github.com/MatiMoreyra/qt5-docker/blob/master/hooks/pre_build)).
 
 ### Continuous delivery
 Every commit to master triggers an automatic build pipeline on Docker Hub which consists on the following steps:
