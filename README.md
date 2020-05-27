@@ -1,4 +1,7 @@
 # Qt5 Docker
+[![Docker Hub Automated Build](https://img.shields.io/docker/cloud/automated/matimoreyra/qt5)](https://hub.docker.com/r/matimoreyra/qt5)
+[![Docker Hub Build](https://img.shields.io/docker/cloud/build/matimoreyra/qt5)](https://hub.docker.com/r/matimoreyra/qt5)
+
 Docker image for Qt5 development with CMake and GTest.
 
 ## Deployments
