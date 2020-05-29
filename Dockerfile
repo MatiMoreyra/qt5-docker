@@ -16,8 +16,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 # Build GTest
 RUN cd /usr/src/gtest/ && \
     cmake -DBUILD_SHARED_LIBS=ON && \
-    make && \
-    cp *.so /usr/lib
+    make install
 
 # Cleanup
 RUN rm -rf /var/lib/apt/lists/*
