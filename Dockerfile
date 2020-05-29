@@ -2,7 +2,7 @@ ARG ubuntu_tag=latest
 
 FROM ubuntu:${ubuntu_tag}
 
-# Update package list
+# Install dependencies.
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     git \
     build-essential \
@@ -10,11 +10,11 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     qt5-default  \
     libfontconfig1 \
     mesa-common-dev  \
-    libglu1-mesa-dev
+    libglu1-mesa-dev \
+    libgtest-dev
 
-# Install and build GTest
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libgtest-dev && \
-    cd /usr/src/gtest/ && \
+# Build GTest
+RUN cd /usr/src/gtest/ && \
     cmake -DBUILD_SHARED_LIBS=ON && \
     make && \
     cp *.so /usr/lib
